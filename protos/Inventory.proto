@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package Inventory;
+
+service Inventory {
+    //creates book
+    rpc CreateBook (BookCreateRequest) returns (StandardBookResponse) {};
+    //fetches book
+    rpc GetBook (BookRetrieveRequest) returns (StandardBookResponse) {};
+}
+
+// defining requests
+// create request message
+message BookCreateRequest {
+    string ISBN =1;
+    string Title =2;
+    string Author =3;
+    string Genre =4;
+    int32 PublishingYear =5;
+}
+// create request message
+message BookRetrieveRequest {
+    string ISBN =1;
+}
+
+// defining responses
+// standard response message
+message StandardBookResponse {
+    string ISBN =1;
+    string Title =2;
+    string Author =3;
+    string Genre =4;
+    int32 PublishingYear =5;
+}
