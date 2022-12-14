@@ -10,7 +10,7 @@ class InventoryClient(object):
     """
 
     def __init__(self,host='localhost',server_port=50051):
-        # set host and port , defaultly resorts to localhost
+        # set host and port , defaultly resorts to localhost if not specified
         self.host = host
         self.server_port = server_port
 
@@ -37,7 +37,7 @@ class InventoryClient(object):
 if __name__ == '__main__':
     
     # initiate client
-    client = InventoryClient()
+    client = InventoryClient(host='localhost',server_port=50051)
 
     # setup logging configs
     logging.basicConfig()

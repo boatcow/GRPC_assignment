@@ -11,7 +11,7 @@ class testGetBookTitles(unittest.TestCase):
 
     # testing get book mock
     def test_get_book_mock(self):
-        inventory_client_mock = InventoryClient()
+        inventory_client_mock = InventoryClient(host='localhost',server_port=50051)
         inventory_client_mock.get_book = Mock()
         expected = [Book(ISBN="1", Title="Test1"),
                           Book(ISBN="2", Title="Test2")]
@@ -21,7 +21,7 @@ class testGetBookTitles(unittest.TestCase):
 
     # testing get book live server
     def test_get_book_live_server(self):
-        inventory_client = InventoryClient()
+        inventory_client = InventoryClient(host='localhost',server_port=50051)
         books = get_books(inventory_client, ["1", "2"])
         expected=[
         StandardBookResponse(Author='abc',Genre='UNKNOWN',ISBN='1',PublishingYear=2010,Title='Test1'),

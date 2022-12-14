@@ -10,4 +10,7 @@ def get_books(client, isbn_list):
 
 
 if __name__ == "__main__":
-    get_books(InventoryClient(), ["1", "2"])
+    result=get_books(InventoryClient(host='localhost',server_port=50051), ["1", "2"])
+    print("\n-------OUTPUT-------\n")
+    for res in result:
+        print(res)
