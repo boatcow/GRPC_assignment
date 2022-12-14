@@ -6,7 +6,8 @@ import Inventory_pb2 as Inventory__pb2
 
 
 class InventoryStub(object):
-    """Missing associated documentation comment in .proto file."""
+    """1. SERVICE
+    """
 
     def __init__(self, channel):
         """Constructor.
@@ -17,7 +18,7 @@ class InventoryStub(object):
         self.CreateBook = channel.unary_unary(
                 '/Inventory.Inventory/CreateBook',
                 request_serializer=Inventory__pb2.BookCreateRequest.SerializeToString,
-                response_deserializer=Inventory__pb2.StandardBookResponse.FromString,
+                response_deserializer=Inventory__pb2.StatusResponse.FromString,
                 )
         self.GetBook = channel.unary_unary(
                 '/Inventory.Inventory/GetBook',
@@ -27,7 +28,8 @@ class InventoryStub(object):
 
 
 class InventoryServicer(object):
-    """Missing associated documentation comment in .proto file."""
+    """1. SERVICE
+    """
 
     def CreateBook(self, request, context):
         """creates book
@@ -49,7 +51,7 @@ def add_InventoryServicer_to_server(servicer, server):
             'CreateBook': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateBook,
                     request_deserializer=Inventory__pb2.BookCreateRequest.FromString,
-                    response_serializer=Inventory__pb2.StandardBookResponse.SerializeToString,
+                    response_serializer=Inventory__pb2.StatusResponse.SerializeToString,
             ),
             'GetBook': grpc.unary_unary_rpc_method_handler(
                     servicer.GetBook,
@@ -64,7 +66,8 @@ def add_InventoryServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class Inventory(object):
-    """Missing associated documentation comment in .proto file."""
+    """1. SERVICE
+    """
 
     @staticmethod
     def CreateBook(request,
@@ -79,7 +82,7 @@ class Inventory(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/Inventory.Inventory/CreateBook',
             Inventory__pb2.BookCreateRequest.SerializeToString,
-            Inventory__pb2.StandardBookResponse.FromString,
+            Inventory__pb2.StatusResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

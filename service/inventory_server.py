@@ -21,26 +21,24 @@ class InventoryServiceServicer(InventoryServicer):
     # //fetches book
     # rpc GetBook (BookRetrieveRequest) returns (StandardBookResponse);
     def CreateBook(self, request, context):
-        response={
-            "ISBN" : request.ISBN,
-             "Title":request.Title,
-             "Author":request.Author,
-             "Genre":request.Genre,
-             "PublishingYear":request.PublishingYear
-        }
-        # ISBN,title,author,genre,publishing_year
+
+        print("received request")
         try:        
             new_book=Book(str(request.ISBN),str(request.Title),str(request.Author),str(request.Genre),int(request.PublishingYear))
-            inventory.add_book(new_book.get_book())
+            response=inventory.add_book(new_book.get_book())
+            print(response)
         except Exception as e:
             print(e)
 
 
-        return pb2.StandardBookResponse(**response)
+        return pb2.StatusResponse(**response)
 
     def GetBook(self, request, context):
-        response=inventory.get_book(request.ISBN) 
-        return pb2.StandardBookResponse(**response)
+        print("received request")
+        response=inventory.get_book(request.ISBN)
+        if response: 
+            return pb2.StandardBookResponse(**response)
+        return pb2.StandardBookResponse()
 
  
 def serve():
