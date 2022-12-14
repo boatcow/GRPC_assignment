@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package Inventory;
 
-// 1. SERVICE
+// 1. INVENTORY SERVICE
 service Inventory {
     //creates book
     rpc CreateBook (BookCreateRequest) returns (StatusResponse) {};
@@ -44,7 +44,6 @@ message BookRetrieveRequest {
 }
 
 // 5. RESPONSE DEFINITIONS
-
 // standard response message
 message StandardBookResponse {
     string ISBN =1;

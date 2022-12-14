@@ -1,4 +1,6 @@
 import uuid
+
+# To create a new Book object and retrieve information to load to Inventory
 class Book:
     def __init__(self,ISBN,title,author,genre,publishing_year):
         self.isbn=ISBN
@@ -14,4 +16,5 @@ class Book:
             "Genre" : self.genre,
             "PublishingYear" : self.publishing_year
         }
-Book("123","title","author","genre",123)
+
+        

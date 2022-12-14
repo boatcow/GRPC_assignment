@@ -7,8 +7,10 @@ sys.path.append('../service/')
 from Inventory_pb2 import Book,StandardBookResponse
 
 
-class TestGetBookTitles(unittest.TestCase):
-    def test_get_book(self):
+class testGetBookTitles(unittest.TestCase):
+
+    # testing get book mock
+    def test_get_book_mock(self):
         inventory_client_mock = InventoryClient()
         inventory_client_mock.get_book = Mock()
         expected = [Book(ISBN="1", Title="Test1"),
@@ -17,6 +19,7 @@ class TestGetBookTitles(unittest.TestCase):
         actual = get_books(inventory_client_mock, ["1", "2"])
         assert actual == expected
 
+    # testing get book live server
     def test_get_book_live_server(self):
         inventory_client = InventoryClient()
         books = get_books(inventory_client, ["1", "2"])
